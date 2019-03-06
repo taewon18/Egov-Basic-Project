@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<Configuration>
+    <Appenders>
+    
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %p [%c] %m%n" />
+        </Console>
+  
+        <!--추가된 부분-->
+        <Console name="console-infolog" class="org.apache.log4j.ConsoleAppender">
+            <layout class="org.apache.log4j.PatternLayout">
+                <param name="ConversionPattern" value="%m%n" />
+            </layout>  
+            </Console>
+        <!-- -->
+ 
+    </Appenders>
+    
+    <Loggers>
+        
+        <Logger name="java.sql" level="info" additivity="false">
+            <AppenderRef ref="console-infolog" />
+        </Logger>
+        
+        <Logger name="jdbc.audit" level="error" additivity="false">
+            <AppenderRef ref="console-infolog" />
+        </Logger>
+        
+        <Logger name="jdbc.resultset" level="error" additivity="false">
+            <AppenderRef ref="console-infolog" />
+        </Logger>
+        
+        <Logger name="jdbc.resultsettable" level="info" additivity="false">
+            <AppenderRef ref="console-infolog" />
+        </Logger>
+        
+        <Logger name="jdbc.connection" level="error" additivity="false">
+            <AppenderRef ref="console-infolog" />
+        </Logger>
+        
+        <Logger name="egovframework" level="error" additivity="false">
+            <AppenderRef ref="console" />
+        </Logger>
+          
+         
+        <Logger name="jdbc.sqltiming" level="error" additivity="false">
+            <AppenderRef ref="console-infolog" />
+        </Logger>
+        
+        <Logger name="org.springframework" level="error" additivity="false">
+            <AppenderRef ref="console" />
+        </Logger>
+        
+        
+        <!-- 추가된 부분-->
+           <!-- Query Loggers -->
+        <Logger name="jdbc.sqlonly" additivity="false"> 
+            <level value="info"/> 
+            <appender-ref ref="console-infolog"/> 
+        </Logger>
+    
+ 
+        <Root level="info">
+            <AppenderRef ref="console" />
+        </Root>
+    </Loggers>
+</Configuration>
+

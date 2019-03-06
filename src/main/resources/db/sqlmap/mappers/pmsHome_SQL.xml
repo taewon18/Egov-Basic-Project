@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pms.home.service.impl.HomeMapper">
+
+	
+	<resultMap id="BBusinessVO" type="pms.home.service.BusinessVO">
+		<result property="BIZ_NO" column="BIZ_NO"/>
+		<result property="BIZ_NUMBER" column="BIZ_NUMBER"/>
+		<result property="BIZ_NAME" column="BIZ_NAME"/>
+	</resultMap>
+
+	
+
+	<select id="selectBusinessList" parameterType="BusinessVO" resultType="BusinessVO">
+			SELECT 	*
+			FROM 	tb_business
+	</select>
+
+	
+
+</mapper>
